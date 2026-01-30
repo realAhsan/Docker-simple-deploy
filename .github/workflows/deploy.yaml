@@ -33,7 +33,11 @@ jobs:
         run: |
           cd backend
           npm ci
-          npm run build || echo "No build step, skipping"
+          if [ -f package.json ] && grep -q '"build"' package.json; then
+           npm run build
+          else
+           echo "No build step, skipping backend build"
+          fi
 
       # 5️⃣ Copy frontend & backend to EC2
       - name: Copy Files to EC2
