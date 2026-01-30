@@ -11,8 +11,12 @@ app.use(
   }),
 );
 
+app.get("/", (req, res) => {
+  res.send("Node.js backend v2");
+});
+
 app.get("/api", (req, res) => {
-  res.json({ message: "Hello from Node API" });
+  res.json({ message: "Hello from Node API v2" });
 });
 
 const PORT = process.env.PORT || 5000;
